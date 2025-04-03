@@ -25,10 +25,10 @@ export default function TodoList() {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-  // Update API endpoint for your hosted backend
-  const apiUrl = "https://reactjs-int-django.onrender.com/api/todos/";
+  
+  const apiUrl = "https://reactjs-int-django.onrender.com";
 
-  // Fetch tasks from the API
+  
   useEffect(() => {
     axios
       .get(apiUrl)
@@ -45,7 +45,7 @@ export default function TodoList() {
 
     const newTask = { title: task, completed: false };
 
-    // POST request to add a new task
+    
     axios
       .post(apiUrl, newTask)
       .then((response) => {
@@ -60,7 +60,7 @@ export default function TodoList() {
   const removeTask = (index) => {
     const taskToRemove = tasks[index];
 
-    // DELETE request to remove a task
+    
     axios
       .delete(`${apiUrl}${taskToRemove.id}/`)
       .then(() => {
@@ -74,7 +74,7 @@ export default function TodoList() {
   const toggleComplete = (index) => {
     const updatedTask = { ...tasks[index], completed: !tasks[index].completed };
 
-    // PUT request to update a task's completion status
+    
     axios
       .put(`${apiUrl}${updatedTask.id}/`, updatedTask)
       .then((response) => {
@@ -96,7 +96,7 @@ export default function TodoList() {
   const saveEdit = (index) => {
     const updatedTask = { ...tasks[index], title: editText };
 
-    // PUT request to update task text
+    
     axios
       .put(`${apiUrl}${updatedTask.id}/`, updatedTask)
       .then((response) => {
