@@ -26,7 +26,7 @@ export default function TodoList() {
   }, [darkMode]);
 
   
-  const apiUrl = "https://reactjs-int-django.onrender.com";
+  const apiUrl = "https://reactjs-int-django.onrender.com/api/todos/";
 
   
   useEffect(() => {
