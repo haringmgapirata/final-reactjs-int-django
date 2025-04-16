@@ -25,10 +25,8 @@ export default function TodoList() {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-  
-  const apiUrl = "https://reactjs-int-django.onrender.com/api/todos/";
+  const apiUrl = "https://fastapi-for-vite.onrender.com/todos/";
 
-  
   useEffect(() => {
     axios
       .get(apiUrl)
@@ -45,7 +43,6 @@ export default function TodoList() {
 
     const newTask = { title: task, completed: false };
 
-    
     axios
       .post(apiUrl, newTask)
       .then((response) => {
@@ -60,7 +57,6 @@ export default function TodoList() {
   const removeTask = (index) => {
     const taskToRemove = tasks[index];
 
-    
     axios
       .delete(`${apiUrl}${taskToRemove.id}/`)
       .then(() => {
@@ -74,7 +70,6 @@ export default function TodoList() {
   const toggleComplete = (index) => {
     const updatedTask = { ...tasks[index], completed: !tasks[index].completed };
 
-    
     axios
       .put(`${apiUrl}${updatedTask.id}/`, updatedTask)
       .then((response) => {
@@ -96,7 +91,6 @@ export default function TodoList() {
   const saveEdit = (index) => {
     const updatedTask = { ...tasks[index], title: editText };
 
-    
     axios
       .put(`${apiUrl}${updatedTask.id}/`, updatedTask)
       .then((response) => {
